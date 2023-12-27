@@ -9,6 +9,19 @@ const getPokemons = async (req, res) => {
   }
 };
 
+const getByOrigin = async (req, res) => {
+  const { origin } = req.query;
+  try {
+    const response =
+      origin === "api"
+        ? await pokemonServices.searchAllInAPI()
+        : await pokemonServices.searchAllInDB();
+    res.status(200).json(response);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
 const getById = async (req, res) => {
   const { pokemonId } = req.params;
   try {
@@ -40,6 +53,7 @@ const postPokemon = async (req, res) => {
 };
 
 module.exports = {
+  getByOrigin,
   getPokemons,
   getById,
   postPokemon,
