@@ -17,7 +17,7 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: true,
       },
-      life: {
+      hp: {
         type: DataTypes.STRING,
         allowNull: false,
       },
@@ -40,6 +40,10 @@ module.exports = (sequelize) => {
       weight: {
         type: DataTypes.STRING,
         allowNull: false,
+      },
+      created: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: true,
       },
     },
     { timestamps: false }

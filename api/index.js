@@ -19,10 +19,13 @@
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const server = require("./src/app.js");
 const { conn } = require("./src/db.js");
+const { savePokemonsInDB } = require("./src/services/pokemonServices.js");
+const { saveTypesInDB } = require("./src/services/typesServices.js");
 
-// Syncing all the models at once.
 conn.sync({ force: false }).then(() => {
-  server.listen(3001, () => {
+  server.listen(3001, async () => {
+    // await saveTypesInDB();
+    // await savePokemonsInDB();
     console.log("database on");
     console.log("server listening at 3001"); // eslint-disable-line no-console
   });
