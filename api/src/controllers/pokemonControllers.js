@@ -5,8 +5,10 @@ const getPokemons = async (req, res) => {
   try {
     const serviceResponse =
       origin === "api"
-        ? await pokemonServices.getPokemonsInAPI()
-        : await pokemonServices.getPokemonsInDB();
+        ? await pokemonServices.getApiPokemons()
+        : origin === "db"
+        ? await pokemonServices.getDbPokemons()
+        : await pokemonServices.totalPokemons();
     res.status(200).json(serviceResponse);
   } catch (error) {
     res.status(400).json({ error: error.message });
