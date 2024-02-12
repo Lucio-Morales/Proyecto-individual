@@ -1,0 +1,25 @@
+.pokemonCard {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 8px;
+  width: 200px;
+  transition: box-shadow 0.3s;
+}
+
+.pokemonCard:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Cambia la sombra cuando el cursor está sobre la tarjeta */
+}
+
+.pokemonName {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.pokemonImage {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  image-rendering: pixelated;
+}

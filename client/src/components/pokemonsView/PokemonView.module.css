@@ -1,0 +1,12 @@
+.pokemonView {
+  display: flex;
+  justify-content: center; /* Centra el contenido horizontalmente */
+  padding: 16px;
+}
+
+.pokemonContainer {
+  display: flex;
+  flex-wrap: wrap; /* Envuelve los Pokémon en varias líneas */
+  justify-content: space-around; /* Distribuye el espacio entre los Pokémon */
+  max-width: 800px; /* Limita el ancho máximo del contenedor */
+}

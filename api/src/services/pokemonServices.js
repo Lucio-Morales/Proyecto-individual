@@ -64,12 +64,36 @@ const savePokemonsToDatabase = async (pokemonData) => {
   console.log(`Pokemon ${createdPokemon.name} guardado en la DB.`);
 };
 
-const getApiPokemons = () => {};
+const getApiPokemons = async () => {
+  const apiPokemons = await Pokemon.findAll({
+    where: {
+      created: false,
+    },
+  });
+  return apiPokemons;
+};
 
-const getDbPokemons = () => {};
+const getDbPokemons = async () => {
+  const dbPokemons = await Pokemon.findAll({
+    where: {
+      created: true,
+    },
+  });
+  return dbPokemons;
+};
+
+const getTotalPokemons = async () => {
+  const pokemons = await Pokemon.findAll();
+  if (pokemons) {
+    return pokemons;
+  } else {
+    return { msg: "Todavia no hay pokemons cargados." };
+  }
+};
 
 module.exports = {
   totalPokemons,
+  getTotalPokemons,
   getApiPokemons,
   getDbPokemons,
 };
