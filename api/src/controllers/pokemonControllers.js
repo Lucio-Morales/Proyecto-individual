@@ -1,6 +1,23 @@
 const { pokemonServices } = require("../services");
 
-const postPokemon = async (req, res) => {};
+const postPokemon = async (req, res) => {
+  const { name, hp, attack, defense, speed, weight, height, image } = req.body;
+  try {
+    const response = await pokemonServices.createPokemon(
+      name,
+      hp,
+      attack,
+      defense,
+      speed,
+      weight,
+      height,
+      image
+    );
+    res.status(200).json(response);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
 
 const getPokemons = async (req, res) => {
   const { origin } = req.query;
@@ -17,6 +34,19 @@ const getPokemons = async (req, res) => {
   }
 };
 
+const getPokemonById = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const response = await pokemonServices.searchById(id);
+    res.status(200).json(response);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
 module.exports = {
+  getPokemonById,
+  postPokemon,
   getPokemons,
 };

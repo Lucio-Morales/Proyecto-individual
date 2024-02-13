@@ -13,4 +13,13 @@ export const getPokemons = async () => {
   }
 };
 
-export const postPokemon = () => {};
+export const postPokemon = async () => {
+  try {
+    const response = await fetch(`${API_URL}/create`);
+    if (response.ok) {
+      throw new Error("Hubo un problema al intentar crear el pokemon.");
+    }
+  } catch (error) {
+    console.log("Error al crear Pokemon:", error);
+  }
+};
